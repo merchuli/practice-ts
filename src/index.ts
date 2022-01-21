@@ -40,3 +40,49 @@ const tuple: [number, string, boolean] = [1, 'a', true];
 const tuple2: [string, string][] = [['a', 'b'], ['c', 'd']];
 
 
+/** 
+ * ==== Enum (列舉 / 枚舉) ===
+ * (ts 新增的語法)
+ **/
+
+/** 範例一：方案類型，字串列舉(String enum) */
+enum SubscriptionPlan {
+  ADVANCE = 'advanced',
+  PREMIER = 'premier',
+  ELITE = 'elite',
+}
+
+const selectedPlan = SubscriptionPlan.ADVANCE;
+
+/** 範例二：API Response 狀態，數字列舉(Number enum) */
+enum ResStatus {
+  SUCCESS = 1,
+  FAIL = 0,
+  UNKNOWN_PARAMETER = -1,
+}
+
+const apiStatus = ResStatus.SUCCESS;
+console.log('api status', apiStatus);
+
+/** NOTE:
+ * typescript 的 enum 轉譯成 javascript 是用 IIFE 去表示，
+ * 而且會使用 `var` 做宣告，也就是會變成全域物件(window.variable)
+ * 物件最後的呈現如下：
+ * 範例一：
+ * SubscriptionPlan = {
+ *   ADVANCE = 'advanced',
+ *   PREMIER = 'premier',
+ *   ELITE = 'elite',
+ * }
+ * 
+ * 範例二：
+ * ResStatus = {
+ *   0: 'FAIL',
+ *   1: 'SUCCESS'
+ *   -1: 'UNKNOWN_PARAMETER',
+ *   FAIL: 0,
+ *   SUCCESS: 1,
+ *   UNKNOWN_PARAMETER: -1,
+ * }
+ * 
+ */
