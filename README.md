@@ -77,6 +77,9 @@ enum Days {
 
 => 其他還有字串列舉(類別為 string)、異構列舉(多種類別)、常數列舉(enum 前面使用 `const`)、外部列舉(enum 前面使用 `declare`)，可以看文章查看更多 [2]
 
+
+## Interface 可被擴充以及 implements
+
 ## Reference
 [1] [TypeScript 快速入門影片檔](https://www.youtube.com/watch?app=desktop&fbclid=IwAR01F3Pw93Kzilc9VJsxORzfXNfWd2CAkd16Nn_9-hDO9Mb1_RGHnWio02U&v=GinkGJZBHIY&feature=youtu.be)
 [2] [Tuple & Enum](https://ithelp.ithome.com.tw/articles/10221546)

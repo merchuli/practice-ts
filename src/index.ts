@@ -30,8 +30,10 @@ whatEver = 'whatEver';
 const arr: string[] = ['a', 'b'];
 const arrx2: number[][] = [[1, 2, 3], [4, 5 , 6]];
 
+let list: Array<string>;  // ['a', 'b', 'c']
+
 /**
- * 陣列的延伸： Tuple, 元祖
+ * 陣列的延伸： Tuple, 元組
  * 嚴格的陣列，陣列元素數量是固定的，且每個元素型別都是已知的，但個別型別不用相同。
  * The definition of "Tuple" from Cambridge Dictionary:
  * "a structure of data that has several parts"
@@ -97,6 +99,13 @@ let a0: number | string;
 a0 = 1;
 a0 = 'Hello a0';
 
+function printId(id: number | string) {
+  console.log('my id is: ', id);
+}
+
+printId(123);
+printId('456');
+
 
 /** type */
 type A = number | string;
@@ -110,6 +119,17 @@ let b1: B;
 b1 = false;
 b1 = 'Hello b1';
 
+type Point = {
+  x: number;
+  y: number;
+};
+ 
+function printCoord(pt: Point) {
+  console.log("The coordinate's x value is " + pt.x);
+  console.log("The coordinate's y value is " + pt.y);
+}
+ 
+printCoord({ x: 100, y: 100 });
 
 /** 
  * ==== Interface ===
@@ -126,8 +146,8 @@ interface User {
  * Type 是不能擴充的，Interface 可以擴充，且 Interface 可以被 Class 繼承
  **/
 type Card = {
-  name: string,
-  desc: string,
+  name: string;
+  desc: string;
 }
 
 // Error: Duplicate Identifier
@@ -151,6 +171,19 @@ const myCard: ICard = {
   age: 18
 }
 
+interface IPoint {
+  x: number;
+  y: number;
+  z?: number;
+}
+
+function anotherPrintCoord(pt: IPoint) {
+  console.log("The coordinate's x value is " + pt.x);
+  console.log("The coordinate's y value is " + pt.y);
+}
+
+anotherPrintCoord({ x: 100, y: 100 });
+
 /** 
  * ==== function ===
  */
@@ -167,11 +200,13 @@ function getIntro(name: string, age?: number): string {
 }
 
 // Arrow Function
-const func = () => {}
+const func = () => {}; // void
 
 const func2 = () => {
   return 3;
 }
+
+const c = func2();  // c: number
 
 /**
  * 斷言 unknown，語法 `as`
@@ -237,4 +272,82 @@ class LiveJS {
   constructor(name: string) {
     this.#name = name;
   }
+}
+
+interface ICar {
+  name: string,
+  age: number,
+}
+
+class Car implements ICar {
+  // 實作的 Interface 不可以是 Private
+  name: string;
+  age: number;
+
+  constructor (name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
+
+
+
+type Animal = {
+  name: string
+}
+
+type Bear = Animal & { 
+  honey: boolean 
+}
+
+const bear1: Bear = { name: 'Bear 1', honey: true };
+bear1.name;
+bear1.honey;
+
+
+/** Generics */
+function myToArray<Type>(arg: Type): Array<Type> {
+  return [arg];
+}
+
+myToArray<number>(123);    // return [123]
+// myToArray<number>('123');  // Error!
+myToArray<string>('456')   // return ['456']
+
+const myArray2 = <T>(arg: T): Array<T> => {
+  return [arg];
+}
+
+// Type Operators - keyof
+type PointObj = { x: number; y: number };
+type P1 = keyof PointObj;  // type P1 = 'x' | 'y'
+let p1: P1;
+p1 = 'x';
+p1 = 'y'
+// p1 = 'z';  // Error!
+
+type Arrayish = { [n: number]: unknown };
+type A1 = keyof Arrayish;  // type A1 = number
+
+let aa1: Arrayish;
+aa1 = {
+  1: 'x',
+  2: 'y',
+  // 'x': 33,  // Error!
+}
+
+type Mapish = { [k: string]: boolean };
+type M = keyof Mapish;  // type M = string | number
+
+let m1: Mapish;
+m1 = {
+  'x': true,
+  'y': false,
+  0: true,
+  // 1: '1',  // Error!
+};
+
+
+interface TitleProps<T> {
+	name: T;
 }
