@@ -108,7 +108,25 @@ function anotherPrintCoord(pt: IPoint) {
 anotherPrintCoord({ x: 100, y: 100 });
 ```
 
+```typescript
+enum SubscriptionPlan {
+  ADVANCE = 'advanced',
+  PREMIER = 'premier',
+  ELITE = 'elite',
+}
 
+const selectedPlan = SubscriptionPlan.ADVANCE;
+```
+
+```typescript
+enum ResStatus {
+  SUCCESS = 1,
+  FAIL = 0,
+  UNKNOWN_PARAMETER = -1,
+}
+
+const apiStatus = ResStatus.SUCCESS;
+```
 
 
 
@@ -262,6 +280,68 @@ let p1: P1;
 p1 = 'x';
 p1 = 'y'
 p1 = 'z';  // Error!
+```
+
+
+
+
+
+
+
+## class
+
+>  Classes are a template for creating objects. They encapsulate data with code to work on that data. Classes in JS are built on prototypes but also have some syntax and semantics that are not shared with ES5 class-like semantics.
+
+> Classes are in fact "special [functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions)"
+
+### class declaration
+
+```js
+class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+}
+```
+
+
+
+#### Hoisting
+
+An important difference between **function declarations** and **class declarations** is that while functions can be called in code that appears before they are defined, classes must be defined before they can be constructed. Code like the following will throw a [`ReferenceError`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError):
+
+```js
+const p = new Rectangle(); // ReferenceError
+
+class Rectangle {}
+```
+
+
+
+
+
+Type Assertion
+
+```typescript
+const myCanvas = document.getElementById("main_canvas") as HTMLCanvasElement;
+
+const myCanvas = <HTMLCanvasElement>document.getElementById("main_canvas");
+```
+
+```typescript
+type TodoItem = {
+  userId: number,
+  id: number,
+  title: string,
+  completed: boolean,
+}
+
+async function getData() {
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+  
+  return await res.json() as TodoItem;
+}
 ```
 
 
