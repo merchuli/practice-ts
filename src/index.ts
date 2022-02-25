@@ -222,9 +222,10 @@ type TodoItem = {
 
 async function getData() {
   const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-  const data = await res.json() as TodoItem;
+  return await res.json() as TodoItem;
 }
 
+const myDataFromAPI = getData();
 
 /** 
  * Class
@@ -351,3 +352,10 @@ m1 = {
 interface TitleProps<T> {
 	name: T;
 }
+
+
+const myCanvas1 = document.getElementById("main_canvas") as HTMLCanvasElement;
+
+const myCanvas2 = <HTMLCanvasElement>document.getElementById("main_canvas");
+
+

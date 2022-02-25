@@ -1,7 +1,9 @@
 # Practice TypeScript
 
 
+
 ## TypeScript 指令集
+
 - 安裝 typescript `npm install -g typescript`
 - 確認版本 `tsc -v`
 - 編譯指定檔案 `tsc DIR/FILE_NAME.ts`，會在同一層產生 FILE_NAME.js
