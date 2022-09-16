@@ -84,4 +84,5 @@ enum Days {
 
 ## Reference
 [1] [TypeScript 快速入門影片檔](https://www.youtube.com/watch?app=desktop&fbclid=IwAR01F3Pw93Kzilc9VJsxORzfXNfWd2CAkd16Nn_9-hDO9Mb1_RGHnWio02U&v=GinkGJZBHIY&feature=youtu.be)
+
 [2] [Tuple & Enum](https://ithelp.ithome.com.tw/articles/10221546)
