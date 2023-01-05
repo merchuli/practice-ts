@@ -1,5 +1,5 @@
 # Practice TypeScript
-
+> Slide Link: https://www.slideshare.net/HuiRuLiang1/typescript-254914305
 
 
 ## TypeScript 指令集
